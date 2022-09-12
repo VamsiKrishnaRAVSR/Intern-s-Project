@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
@@ -9,7 +10,8 @@ import { LoginProps } from "../../types/login.types";
 import "./Login.css";
 
 const Login = () => {
-  const { mutate, isLoading, isError, error, isSuccess } = usePostLogin();
+  const navigate = useNavigate();
+  const { mutate, isError, error, isSuccess } = usePostLogin();
   const initialValues: LoginProps = {
     email: "",
     password: "",
@@ -24,6 +26,12 @@ const Login = () => {
     console.log(data);
     mutate(data);
   };
+
+  if (isSuccess) {
+    console.log("success");
+    navigate("/book");
+  }
+
   // if (isLoading) {
   //   return <Loader />;
   // }

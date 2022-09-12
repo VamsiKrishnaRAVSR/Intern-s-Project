@@ -10,5 +10,7 @@ import { loginService } from "../services/login.services";
 // };
 
 export const usePostLogin = () => {
-  return useMutation(loginService);
+  return useMutation(loginService, {
+    onError: (err) => console.log(err),
+  });
 };

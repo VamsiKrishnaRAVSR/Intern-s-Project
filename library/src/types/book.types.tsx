@@ -1,7 +1,19 @@
 export interface Book {
   name: string;
+  prize: number;
+  category: string;
+}
+
+export interface BookDetailsList {
+  id: string;
+  name: string;
   prize: string;
   category: string;
+  status: string; //"available";
+  created_by: string; // "admin@test.com";
+  created_at: number; //1345679876543454;
+  updated_by: string; // "admin@test.com";
+  updated_at: number; // 1345679876543454;
 }
 
 //for create, update, GET
@@ -35,7 +47,7 @@ export interface deleteSuccessResponse {
   //   };
 }
 
-//Book issueing 
+//Book issueing
 
 export interface getBookHistoryUsers {
   request_id: string;

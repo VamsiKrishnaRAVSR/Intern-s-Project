@@ -18,7 +18,9 @@ export const deleteBook = (id: number) => {
 };
 
 export const getBooks = () => {
-  return sleep().then(() => axios.get(API_BOOK_ROUTES.GET_BOOKS));
+  return sleep().then(() =>
+    axios.get(API_BOOK_ROUTES.GET_BOOKS).then((data) => data.data[0].data)
+  );
 };
 
 export const getBookHistory = () => {
@@ -32,5 +34,5 @@ export const issueBook = (userId: number, bookId: number) => {
     "/:id",
     String(userId)
   ).replace("/:bookId", String(bookId));
-  sleep().then(() => axios.post(api, ));
+  sleep().then(() => axios.post(api));
 };

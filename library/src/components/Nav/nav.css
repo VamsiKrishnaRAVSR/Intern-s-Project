@@ -23,22 +23,6 @@
 .sidenav-header {
   padding: 10px;
 }
-.book-container {
-  display: flex;
-  flex-direction: row;
+.side-Nav {
   height: 90vh;
-}
-/* .book-main-container{
-
-} */
-.container-body {
-  height: 90vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: scroll;
-}
-.card-container {
-  margin: 10px;
-  width: 18rem;
 }

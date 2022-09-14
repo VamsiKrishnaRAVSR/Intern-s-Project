@@ -1,0 +1,21 @@
+.book-item-container {
+  display: flex;
+  flex-direction: row;
+  margin: 30px 20px;
+}
+.book-item-image {
+  height: 300px;
+  width: 300px;
+  margin-right: 40px;
+}
+.book-item-image-container {
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.book-item-buttons {
+  margin-right: 10px;
+}

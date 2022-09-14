@@ -10,7 +10,7 @@ export const createUser = (data: UserProps) => {
 };
 
 export const updateUser = (data: UserDetails) => {
-  return sleep().then(() => axios.patch(API_USER_ROUTES.PATCH_USER, data));
+  return sleep().then(() => axios.put(API_USER_ROUTES.PATCH_USER, data));
 };
 
 export const getUser = (id: number) => {

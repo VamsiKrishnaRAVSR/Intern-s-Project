@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
@@ -9,38 +8,28 @@ import { usePostLogin } from "../../hooks/Login.hooks";
 import { LoginProps } from "../../types/login.types";
 import "./Login.css";
 
+const validationSchema = yup.object().shape({
+  email: yup.string().required().label("Email"),
+  password: yup.string().required().label("Password"),
+});
+
 const Login = () => {
-  const navigate = useNavigate();
-  const { mutate, isError, error, isSuccess } = usePostLogin();
+  const { mutate, isError, error } = usePostLogin();
   const initialValues: LoginProps = {
     email: "",
     password: "",
   };
 
-  const validationSchema = yup.object().shape({
-    email: yup.string().required().label("Email"),
-    password: yup.string().required().label("Password"),
-  });
+  useEffect(() => {
+    if (error !== null) {
+      toast(`${error}`);
+    }
+  }, [error]);
 
   const onSubmit = (data: LoginProps) => {
     console.log(data);
     mutate(data);
   };
-
-  if (isSuccess) {
-    console.log("success");
-    navigate("/book");
-  }
-
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
-
-  if (isError) {
-    console.log(error);
-    const fn = () => toast(`${error}`);
-    fn();
-  }
 
   return (
     <div className="login">
@@ -53,7 +42,6 @@ const Login = () => {
             alt="library_Img"
             className="library_image"
           />
-
           <p>Get access to huge collection of Books</p>
         </div>
         <div className="formik_div">

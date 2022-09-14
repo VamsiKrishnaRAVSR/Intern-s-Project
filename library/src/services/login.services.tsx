@@ -11,11 +11,7 @@ import { sleep } from "./common.services";
 
 export const loginService = (data: LoginProps) => {
   console.log(data);
-  return sleep().then(() =>
-    axios
-      .post(API_USER_ROUTES.LOGIN_USER, data)
-      .catch((err) => console.log(err))
-  );
+  return sleep().then(() => axios.post(API_USER_ROUTES.LOGIN_USER, data));
 };
 
 // export const loginService = new Login();

@@ -8,7 +8,7 @@ import {
   SidebarContent,
   SidebarFooter,
 } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 
 import {
@@ -21,7 +21,14 @@ import {
 import "./nav.css";
 
 const CommonNav = () => {
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // const toggle = () => setDropdownOpen((prevState) => !prevState);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const [modal, setModal] = useState(false);
+
+  const toggle1 = () => setModal(!modal);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -54,26 +61,31 @@ const CommonNav = () => {
           </DropdownMenu>
         </Dropdown>
       </Navbar>
-      <ProSidebar>
-        <SidebarHeader>
-          <h5 className="sidenav-header">Welcome to Josh Library</h5>
-        </SidebarHeader>
-        <SidebarContent>
-          <Menu iconShape="square">
-            <MenuItem>
-              <Link to="/" />
-              Dashboard
-            </MenuItem>
-            <MenuItem>Home</MenuItem>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>Register a Book</MenuItem>
-            <MenuItem>Register a Person</MenuItem>
-            <MenuItem>All Users</MenuItem>
-            <MenuItem>Issue Book</MenuItem>
-          </Menu>
-        </SidebarContent>
-        <SidebarFooter>C</SidebarFooter>
-      </ProSidebar>
+      <div className="book-container">
+        <ProSidebar>
+          <SidebarHeader>
+            <h5 className="sidenav-header">Welcome to Josh Library</h5>
+          </SidebarHeader>
+          <SidebarContent>
+            <Menu iconShape="square">
+              <MenuItem>
+                <Link to="/book" /> Home
+              </MenuItem>
+              <MenuItem>
+                <Link to="/user/:id" /> Profile
+              </MenuItem>
+              <MenuItem>
+                <Link to="/user" /> All Users
+              </MenuItem>
+              <MenuItem>
+                <Link to="/user/:userId/book/:bookId" />
+                Issue Book
+              </MenuItem>
+            </Menu>
+          </SidebarContent>
+        </ProSidebar>
+        <Outlet />
+      </div>
     </div>
   );
 };

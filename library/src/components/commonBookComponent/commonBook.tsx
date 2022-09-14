@@ -10,7 +10,7 @@ const CommonBook = (props: any) => {
 
   const validationSchema = yup.object().shape({
     name: yup.string().required().label("Name"),
-    price: yup.string().required().label("price"),
+    // price: yup.number().required().label("price"),
     category: yup.string().required().label("Category"),
   });
 
@@ -18,7 +18,9 @@ const CommonBook = (props: any) => {
     <div>
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={async (data) => {
+          await onSubmit(data);
+        }}
         validationSchema={validationSchema}
       >
         <Form>

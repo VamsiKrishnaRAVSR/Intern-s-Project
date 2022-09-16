@@ -1,0 +1,16 @@
+.buttonComponent {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-end; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.up {
+  color: red;
+}
+
+.button-sort {
+  display: flex;
+  flex-direction: column;
+}

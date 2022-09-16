@@ -81,10 +81,16 @@ const CommonNav = () => {
                 <Link to="/user/:userId/book/:bookId" />
                 Issue Book
               </MenuItem>
+              <MenuItem>
+                <Link to="/user/:id/book" />
+                History
+              </MenuItem>
             </Menu>
           </SidebarContent>
         </ProSidebar>
-        <Outlet />
+        <div className="container-outlet">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

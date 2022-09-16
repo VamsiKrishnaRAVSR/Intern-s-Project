@@ -14,6 +14,18 @@ export interface UserDetails {
   password: string;
 }
 
+export interface userData {
+  id: string;
+  name: string;
+  email: string;
+  role_type: string;
+  password: string;
+  created_by: string;
+  created_at: number; //1345679876543454
+  updated_by: string;
+  updated_at: number; //1345679876543454
+}
+
 //for patch and create user, response, GET all users
 export interface UserResponse {
   request_id: string;
@@ -47,7 +59,7 @@ export interface GetUserResponse {
     updated_at: number;
   };
 }
-// for delete user 
+// for delete user
 export interface DeleteUserResponse {
   request_id: string;
   error_code: number;
@@ -57,4 +69,3 @@ export interface DeleteUserResponse {
   //     string;
   //   };
 }
-

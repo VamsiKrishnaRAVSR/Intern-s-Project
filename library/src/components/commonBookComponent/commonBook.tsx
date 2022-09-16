@@ -1,7 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
-
-import React from "react";
 import { Button } from "reactstrap";
 import "./commonBook.css";
 
@@ -26,7 +24,7 @@ const CommonBook = (props: any) => {
         <Form>
           <div className="form-item-container">
             <label htmlFor="name">Enter Name of the Book</label>
-            <Field type="text" name="name" />
+            <Field isDisabled={true} type="text" name="name" />
             <ErrorMessage className="error-message" component="p" name="name" />
           </div>
           <div className="form-item-container">

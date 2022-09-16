@@ -14,12 +14,27 @@
       "email": "abc@gmail.com",
       "password": "123456",
       "id": 3
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "id": 4
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "id": 5
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "id": 6
     }
   ],
   "book": [
     {
       "id": 1,
-      "name": "book_name",
+      "name": "book_name-1",
       "prize": "8000",
       "category": "book_category",
       "status": true,
@@ -42,13 +57,13 @@
     {
       "id": 5,
       "name": "Asoka",
-      "prize": 648,
+      "prize": "64",
       "category": "aoscollain3@google.ca",
-      "status": false,
-      "created_by": "mwoolf3@twitpic.com",
-      "created_at": "1187066798000",
-      "updated_by": "mmechi3@mtv.com",
-      "updated_at": "1212863717000"
+      "status": true,
+      "created_by": "mrawling2@youku.com",
+      "created_at": "1034132335000",
+      "updated_by": "hpover2@un.org",
+      "updated_at": "1325602845000"
     },
     {
       "id": 6,

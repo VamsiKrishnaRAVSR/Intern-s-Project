@@ -56,7 +56,7 @@ export const getBookHistory = () => {
 
 export const issueBook = (userId: number, bookId: number) => {
   const api = API_BOOK_ROUTES.ISSUE_BOOK.replace(":id", String(userId)).replace(
-    "/:bookId",
+    ":bookId",
     String(bookId)
   );
   sleep().then(() => axios.post(api));

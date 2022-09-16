@@ -1,0 +1,27 @@
+.users-container {
+  margin: 20px;
+  height: min-content;
+  /* overflow: auto; */
+  /* width: 90vw; */
+}
+
+.users-table {
+  max-height: 80vh;
+
+  overflow-y: scroll;
+}
+.users-th {
+  box-sizing: border-box;
+}
+.users-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.users-link {
+  text-decoration: none;
+}
+.users-link:hover {
+  text-decoration: underline;
+}

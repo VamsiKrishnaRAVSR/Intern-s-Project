@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import "./book.css";
 import CommonBook from "../commonBookComponent/commonBook";
-import { useCreateBook, useDeleteBook, useGetBooks } from "../../hooks/Book.hooks";
+import { useCreateBook, useGetBooks } from "../../hooks/Book.hooks";
 import Loader from "../Loader/loader";
 import { Link } from "react-router-dom";
 
@@ -28,17 +28,15 @@ const Book = () => {
     category: "",
   };
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modal, setModal] = useState(false);
 
   const toggle1 = () => setModal(!modal);
 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  // const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const onSubmit = (data: BookType) => {
     toggle1();
-    console.log(data);
-
     mutate(data);
   };
 

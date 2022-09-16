@@ -1,5 +1,6 @@
 .Nav {
-  height: 90vh;
+  min-height: 90vh;
+  /* height: max-content; */
   /* width: 99vw; */
 }
 .navbar {
@@ -25,4 +26,9 @@
 }
 .side-Nav {
   height: 90vh;
+}
+.container-outlet {
+  padding: 20px;
+  width: 85vw;
+  height: 85vh;
 }

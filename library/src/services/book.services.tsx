@@ -20,7 +20,6 @@ export const updateMockData = (data: Book) => {
 
 export const createBook = (data: Book) => {
   const updatedData = updateMockData(data);
-  console.log(updatedData);
 
   return sleep().then(() =>
     axios.post(API_BOOK_ROUTES.CREATE_BOOK, updatedData)
@@ -49,17 +48,13 @@ export const getBooks = () => {
 };
 
 export const getBookHistory = () => {
-  sleep().then(() => axios.get(API_BOOK_ROUTES.BOOK_HISTORY));
+  return sleep().then(() => axios.get(API_BOOK_ROUTES.BOOK_HISTORY));
 };
 
 //HOW TO DO this
 
-export const issueBook = (userId: number, bookId: number) => {
-  const api = API_BOOK_ROUTES.ISSUE_BOOK.replace(":id", String(userId)).replace(
-    ":bookId",
-    String(bookId)
-  );
-  sleep().then(() => axios.post(api));
+export const issueBook = (api: string) => {
+  return sleep().then(() => axios.post(api));
 };
 
 export const getBook = (id: string) => {

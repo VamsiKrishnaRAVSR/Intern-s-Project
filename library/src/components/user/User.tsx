@@ -6,7 +6,6 @@ const User = () => {
   const params = useParams();
   const { id } = params;
   const { isLoading, data } = useGetUser(id);
-  console.log(data);
 
   return <div>{id}</div>;
 };

@@ -14,6 +14,14 @@ export interface UserDetails {
   password: string;
 }
 
+export interface updatedUserDetails {
+  name: string;
+  email: string;
+  role: string;
+  id: number;
+  role_type: string;
+}
+
 export interface userData {
   id: string;
   name: string;

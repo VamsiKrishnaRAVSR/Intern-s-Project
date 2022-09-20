@@ -10,7 +10,6 @@ import { sleep } from "./common.services";
 // }
 
 export const loginService = (data: LoginProps) => {
-  console.log(data);
   return sleep().then(() => axios.post(API_USER_ROUTES.LOGIN_USER, data));
 };
 

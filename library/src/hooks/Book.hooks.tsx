@@ -1,9 +1,5 @@
 import { useMemo } from "react";
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 import { BOOK_QUERY_CONSTANTS } from "../constants/queryConstants";
@@ -12,6 +8,7 @@ import {
   deleteBook,
   getBookHistory,
   getBooks,
+  issueBook,
   updateBook,
   updateMockData,
 } from "../services/book.services";
@@ -81,7 +78,7 @@ export const useDeleteBook = () => {
         [BOOK_QUERY_CONSTANTS.GET_BOOKS],
         (oldData: BookDetailsList[]) => {
           return oldData.filter(
-            (ele: BookDetailsList) => String(ele) !== String(variables)
+            (ele: BookDetailsList) => String(ele.id) !== String(variables)
           );
         }
       );
@@ -94,4 +91,8 @@ export const useGetBookHistory = () => {
   return useQuery([BOOK_QUERY_CONSTANTS.GET_BOOK_HISTORY], () =>
     getBookHistory()
   );
+};
+
+export const usePostBookUser = () => {
+  return useMutation((api: string) => issueBook(api));
 };

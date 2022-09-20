@@ -27,7 +27,6 @@ const Login = () => {
   }, [error]);
 
   const onSubmit = (data: LoginProps) => {
-    console.log(data);
     mutate(data);
   };
 

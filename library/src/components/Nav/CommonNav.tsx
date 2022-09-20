@@ -78,7 +78,7 @@ const CommonNav = () => {
                 <Link to="/user" /> All Users
               </MenuItem>
               <MenuItem>
-                <Link to="/user/:userId/book/:bookId" />
+                <Link to="/issue" />
                 Issue Book
               </MenuItem>
               <MenuItem>

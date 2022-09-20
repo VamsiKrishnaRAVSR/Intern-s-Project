@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 
 import React, { useState } from "react";
@@ -8,7 +8,7 @@ import "./commonUser.css";
 const CommonUser = (props: any) => {
   const { initialValues, onSubmit, setFieldsBlur, fieldsBlur } = props;
   const [button] = useState(fieldsBlur);
-  console.log(button);
+  // console.log(button);
 
   const validationSchema = yup.object().shape({
     name: yup.string().required().label("Name"),
@@ -72,7 +72,7 @@ const CommonUser = (props: any) => {
             )}
             <Button type="submit">Submit</Button>
             {button && (
-              <Button onClick={() => setFieldsBlur(false)}>Acc</Button>
+              <Button onClick={() => setFieldsBlur(false)}>Edit</Button>
             )}
           </form>
         )}

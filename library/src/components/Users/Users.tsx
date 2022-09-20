@@ -4,8 +4,9 @@ import {
   useCreateUser,
   useDeleteUser,
   useGetUsers,
+  useUpdateUser,
 } from "../../hooks/User.hooks";
-import { userData, UserProps } from "../../types/user.types";
+import { updatedUserDetails, userData, UserProps } from "../../types/user.types";
 import CommonUser from "../commonUserComponent/commonUser";
 import SortButton from "../sortButton/sortButton";
 import "./user.css";
@@ -14,7 +15,7 @@ const Users = () => {
   const { data } = useGetUsers();
   const { mutate: createUser } = useCreateUser();
   const { mutate: deleteUser } = useDeleteUser();
-  const {mutate: }
+  const { mutate: updateUser } = useUpdateUser();
   const [sorting, setSorting] = useState(["id", "Asc"]);
   const [searchInput, setSearchInput] = useState("");
   const [fieldsBlur, setFieldsBlur] = useState(false);
@@ -24,11 +25,11 @@ const Users = () => {
     role: "",
   });
   const [modal, setModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
+  const toggleUpdate = () => setUpdateModal(!updateModal);
 
   const toggle = () => setModal(!modal);
 
-  console.log(fieldsBlur);
-  
 
   const onSubmit = (data: UserProps) => {
     toggle();
@@ -40,7 +41,6 @@ const Users = () => {
     { id: "name", name: "Name", isRequired: true },
     { id: "email", name: "Email", isRequired: true },
     { id: "created_by", name: "Created By", isRequired: true },
-    { id: "edit", name: "Edit", isRequired: false },
     { id: "Delete", name: "Delete", isRequired: false },
   ];
   const searchName = useMemo(
@@ -52,7 +52,7 @@ const Users = () => {
   );
 
   const updateListByName = useMemo(() => {
-    const p = 
+    const p =
       sorting[1] === "Asc"
         ? searchName?.sort((a: userData, b: userData) =>
             a[sorting[0] as keyof userData] > b[sorting[0] as keyof userData]
@@ -70,11 +70,13 @@ const Users = () => {
   const updateUserDetails = (ele: userData) => {
     setFieldsBlur(true);
     const data = {
+      id: ele.id,
       name: ele.name,
       email: ele.email,
       role: ele.role_type,
     };
     setInitialValues(data);
+    updateUser(ele);
     toggle();
   };
 
@@ -102,7 +104,7 @@ const Users = () => {
         </Button>
       </div>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Add/Edit User</ModalHeader>
+        <ModalHeader toggle={toggle}>Add User</ModalHeader>
         <ModalBody>
           <CommonUser
             fieldsBlur={fieldsBlur}
@@ -112,6 +114,18 @@ const Users = () => {
           />
         </ModalBody>
       </Modal>
+      <Modal isOpen={updateModal} toggle={toggleUpdate}>
+        <ModalHeader toggle={toggleUpdate}>Update User</ModalHeader>
+        <ModalBody>
+          <CommonUser
+            fieldsBlur={fieldsBlur}
+            setFieldsBlur={setFieldsBlur}
+            initialValues={initialValues}
+            onSubmit={updateUserDetails}
+          />
+        </ModalBody>
+      </Modal>
+
       <div className="users-table">
         <Table striped>
           <thead className="users-thead">
@@ -136,20 +150,18 @@ const Users = () => {
                 <tr>
                   <td>{ele.id}</td>
                   <td>
-                    <Button color="link" onClick={() => updateUserDetails(ele)}>
+                    <Button
+                      color="link"
+                      onClick={() => {
+                        toggleUpdate();
+                        updateUserDetails(ele);
+                      }}
+                    >
                       {ele.name}
                     </Button>
                   </td>
                   <td>{ele.email}</td>
                   <td>{ele.created_by}</td>
-                  <td>
-                    <Button
-                      onClick={() => updateUserDetails(ele)}
-                      color="warning"
-                    >
-                      Edit
-                    </Button>
-                  </td>
 
                   <td>
                     <Button

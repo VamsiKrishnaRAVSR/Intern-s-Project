@@ -16,5 +16,5 @@ export const API_BOOK_ROUTES = {
   UPDATE_BOOK: "http://localhost:4000/book/:id",
   DELETE_BOOK: "http://localhost:4000/book/:id",
   BOOK_HISTORY: "http://localhost:4000/user/:id/book",
-  ISSUE_BOOK: "http://localhost:4000/user/:id/book/:bookId",
+  ISSUE_BOOK: "http://localhost:4000/user/:userId/book/:bookId",
 };
